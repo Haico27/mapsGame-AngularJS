@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html ng-app="mapsApp">
+<head>
+	<title>Home</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<script src="/js/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/angular/angular.js"></script>
+	<script src="/angular/angular-route.js"></script>
+	<script src="/helpers/cookieFunctions.js"></script>
+	<script src="/helpers/mapFunctions.js"></script>
+	<script src="app.js"></script>
+	<script src="/controllers/redirectController.js"></script>
+	<script src="/controllers/homeController.js"></script>
+	<script src="/controllers/loginController.js"></script>
+	<script src="/controllers/mapsController.js"></script>
+	<script src="/controllers/registerController.js"></script>
+	<script src="/controllers/profileController.js"></script>
+	<script src="/controllers/socketController.js"></script>
+	<script src="/controllers/highscoresController.js"></script>
+	<script src="/controllers/multiController.js"></script>
+	<script src="/controllers/multiroomController.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaYnkF384Vk5SQAzL7PtIriDlwSG6kSFI&libraries=geometry"></script>
+	<style>
+			html {
+				position: relative;
+				min-height: 100%;
+			}
+			body {
+				/* Margin bottom by footer height */
+				margin-bottom: 60px;
+			}
+			.footer {
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				/* Set the fixed height of the footer here */
+				height: 60px;
+				background-color: #f5f5f5;
+			}
+	</style>
+</head>
+<body>
+<div ng-controller="redirectCtrl">
+	<div ng-controller="socketCtrl">
+
+
+		<nav class="navbar nav-pills navbar-light bg-light" ng-show="showNavbar">
+			<a class="nav-item nav-link" ng-class='{active: homeActive}'href ng-click="goto('/')">Home</a>
+			<a class="nav-item nav-link" ng-class='{active: profileActive}'href ng-click="goto('/profile')">Profile</a>
+			<a class="nav-item nav-link" ng-class="{active: highscoresActive}" href ng-click="goto('/highscores')">Highscores</a>
+			<button class="btn btn-outline-warning" ng-click="logout()">Log out</button>
+		</nav>
+
+
+		<div ng-view></div>
+		<div class="footer">
+			<div class="border border-secondary container-fluid" ng-show="online">
+				<ul class="nav nav-tabs">
+					<li class="nav-item" ng-repeat="chatRoom in chatRooms">
+						<a class="nav-link" ng-class="{active: chatRoom.active}" href ng-click="changeRoom(chatRoom.name)">{{chatRoom.name}}</a>
+					</li>
+				</ul>
+				<table>
+				<tr ng-repeat="msg in currentRoomMessages" id="messages">
+					<td id="username">{{msg.user}}:</td>
+					<td id="chat">{{msg.message}}</td>
+				</tr>
+				</table>
+				<form class="form-inline container-fluid p-0" id="chatwindow">
+					<input class="form-control col-10" id="chatinput" type="text" placeholder="Type a message" ng-model="chatMessage">
+					<button class="btn btn-secondary my-2 my-sm-0 col" id="chatbutton" ng-click="sendMessage()">Send</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

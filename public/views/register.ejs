@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="mapsApp">
+<head>
+	<title>Register</title>
+</head>
+<body>
+<div ng-controller="registerCtrl">
+	<h2 class="m-3">Register user</h2>
+
+	<form class="container p-4 m-2 col-7">
+		<div class="form-group row m-1">
+			<label for="FirstName" class="col-3 p-0">First name:</label>
+	    <input type="text" class="form-control col" id="FirstName"  placeholder="Enter first name" ng-model="reg.firstName" required>
+		</div>
+		<div class="form-group row m-1">
+			<label for="LastName" class="col-3 p-0">Last name:</label>
+	    <input type="text" class="form-control col" id="LastName"  placeholder="Enter last name" ng-model="reg.lastName" required>
+		</div>
+		<div class="form-group row m-1">
+			<label for="Username" class="col-3 p-0">Username:</label>
+	    <input type="text" class="form-control col" id="Username"  placeholder="Enter username" ng-model="reg.username" required>
+		</div>
+		<div class="form-group row m-1">
+			<label for="Password" class="col-3 p-0">Password:</label>
+	    <input type="password" class="form-control col" id="Password"  placeholder="Enter password" ng-model="reg.password" required>
+		</div>
+		<div class="form-group row m-1">
+			<label for="Age" class="col-3 p-0">Age:</label>
+	    <input type="number" class="form-control col" id="Age"  placeholder="Enter age" ng-model="reg.age">
+		</div>
+		<div class="row m-1">
+			<button type="submit" class="btn btn-primary" ng-click="registerUser()">Register</button>
+		</div>
+	</form>
+
+</div>
+</body>
+</html>

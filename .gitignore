@@ -1,0 +1,8 @@
+#node_modules folder
+node_modules/
+
+#.DS_Store files
+*.DS_Store
+
+#Database password file
+server/db-pass.js

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="mapsApp">
+<head>
+	<title>Multiplayer maps game</title>
+	<style>
+		#map {
+			height: 650px;
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div ng-controller="multiroomCtrl">
+		<nav class="navbar navbar-light bg-light">
+			<button class="btn btn-outline-danger" ng-click="goBack()">Back to lobby</button>
+		</nav>
+		<div class="m-3">
+			<h2>Multiplayer game</h2>
+			<div>
+				Logged in as: {{user}}<br>
+				Opponent: {{opponent}}
+			</div>
+			<div>
+				Your score: {{score}}<br>
+				Opponent's score: {{opponentScore}}
+			</div>
+			<div class="text-center" ng-show="gamestart">
+				<div ng-hide="gameover" class="text-center border border-secondary rounded p-4 m-3">
+					<div>
+						<p class="lead">Question {{count}}: {{question.question}}</p>
+					</div>
+					<div>
+						<span ng-hide="hideGeocode">Selected city: {{foundCity}}</span>
+						<button class="btn btn-primary m-3" ng-click="submitAnswer()">Submit answer</button>
+					</div>
+				</div>
+				<div ng-show="gameover" class="alert alert-success" role="alert">
+					The game is over! The winner is {{winner}}!</br>
+					Your score: {{score}}</br>
+					Opponent's score: {{opponentScore}}
+				</div>
+				<div><span>Zoom in: </span></div>
+				<div class="btn-group" role="group" aria-label="Zoom Continents">
+					<button class="btn btn-info" ng-click="zoomWorld(47, 16)">World</button>
+					<button class="btn btn-info" ng-click="zoomContinent(47, -103)">North America</button>
+					<button class="btn btn-info" ng-click="zoomContinent(-21, -61)">South America</button>
+					<button class="btn btn-info" ng-click="zoomContinent(54, 18)">Europe</button>
+					<button class="btn btn-info" ng-click="zoomContinent(40, 87)">Asia</button>
+					<button class="btn btn-info" ng-click="zoomContinent(8, 20)">Africa</button>
+					<button class="btn btn-info" ng-click="zoomContinent(-30, 143)">Australia</button>
+					<button class="btn btn-info" ng-click="reloadMap()">Reload map</button>
+					<button class="btn btn-info" ng-click="resetMap()">Reset map</button>
+				</div>
+				<div id="map"></div>
+			</div>
+		</div>
+	</div>
+</body>

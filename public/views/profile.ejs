@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="mapsApp">
+<head>
+	<title>Profile</title>
+	<style>
+	</style>
+</head>
+<body>
+<div ng-controller="profileCtrl">
+	
+	<div>
+		<h2 class="m-3">Your profile details</h2>
+		<div class="container m-2 p-1">
+			<div class="row">
+				<span class="col-3">Name: </span>
+				<span class="col">{{name}}</span>
+			</div>
+			<div class="row">
+				<span class="col-3">Username:</span>
+				<span class="col">{{user}}</span>
+			</div>
+			<div class="row">
+				<span class="col-3">Age:</span>
+				<span class="col">{{age}}</span>
+			</div>
+		</div>
+
+		<div class="m-3">
+			<button class="btn btn-dark m-1" ng-click="showChangePassword()">Change password</button><br>
+			<div class="container" ng-show="changePasswordSection">
+				<div class="row">
+					<span class="col"> Enter your current password: </span><input class="col" type="password" ng-model="change.currentPassword">
+				</div>
+				<div class="row">
+					<span class="col"> New password: </span><input class="col" type="password" ng-model="change.newPassword">
+				</div>
+				<div class="row">
+					<span class="col"> Confirm new password: </span><input class="col" type="password" ng-model="change.newPasswordConfirm">
+				</div>
+				<div class="row">
+					<button class="btn" ng-click="changePassword()">Change password</button>
+				</div>
+			</div>
+			<button class="btn btn-dark m-1" ng-click="showDelete()">Delete account</button>
+			<div ng-show="deleteSection">
+				Please enter your password to confirm you want to delete your account:<br>
+				<input type="password" ng-model="delete.password"><br>
+				Warning: there will be no further confirmation after clicking the button below!<br>
+				<button class="btn btn-danger" ng-click="deleteAcc()">Permanently delete account</button>
+			</div>
+			<div ng-show="adminSection">
+				Hi you are an admin :^)
+			</div>
+		</div>
+	</div>
+
+</div>
+</body>
+</html>

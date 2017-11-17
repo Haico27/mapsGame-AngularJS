@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="mapsApp">
+<head>
+	<title>Multiplayer</title>
+</head>
+<body>
+<div ng-controller="multiCtrl">
+
+<div class="m-2 p-2 text-center">
+	<h2>Create room</h2>
+	<form>
+		<div class="d-inline">
+			<input type="text"  placeholder="Enter roomname" ng-model="roomName" />
+		</div>
+		<div class="d-inline">
+			<input class="btn btn-primary"type="submit" ng-click="createRoom()" value="Create room" />
+		</div>
+	</form>
+</div>
+
+<div class="m-2 p-4 text-center">
+	<h2>Join room</h2>
+	<ul class="list-group m-auto" style="width: 50%" ng-repeat="room in allMultiRooms">
+		<li class="list-group-item list-group-item-success">
+			ID: {{room.id}}, Name: {{room.name}}
+			<button class="btn btn-light"ng-click="joinRoom(room.id)">Join</button>
+		</li>
+	</ul>
+</div>
+
+</div>
+</body>
+</html>

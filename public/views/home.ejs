@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="mapsApp">
+<head>
+	<title>Home</title>
+</head>
+<body>
+	<div ng-controller="homeCtrl">
+		
+		<div class="text-center mt-5" >
+			<h3>Welcome to the Google Maps Quiz! </h3>
+			<small class="text-muted">Set a new highscore or play with your friends!</small>
+		</div>
+		<div class="text-center m-5">
+			<button class="btn btn-dark" ng-click="goto('/maps')">Start solo game</button>
+			<button class="btn btn-dark" ng-click="goto('/multi')">Start multi game</button>
+		</div>
+	</div>
+</body>
+</html>

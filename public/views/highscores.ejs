@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="mapsApp">
+<head>
+	<title>Highscores</title>
+</head>
+<body>
+	<div ng-controller="highscoresCtrl">
+		
+		<h2 class="m-3">Highscores</h2>
+
+		<table class="table">
+			<tr>
+				<th>Rank</th>
+				<th>Name</th>
+				<th>Highscore</th>
+			</tr>
+			<tr ng-repeat="user in users">
+				<td>#{{ $index + 1 }}</td>
+				<td>{{ user.firstname }}</td>
+				<td>{{ user.highscore }}</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

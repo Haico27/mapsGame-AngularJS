@@ -1,0 +1,19 @@
+{
+  "name": "mapsApp",
+  "version": "0.0.1",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.14.2",
+    "bootstrap": "^4.0.0-beta",
+    "client-sessions": "0.8.0",
+    "ejs": "2.5.7",
+    "express": "^4.13.4",
+    "jquery": "^3.2.1",
+    "mysql": "^2.10.2",
+    "socket.io": "2.0.3"
+  },
+  "main": "maps-server.js",
+  "scripts": {
+    "start": "node maps-server.js"
+  }
+}

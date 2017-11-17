@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="mapsApp">
+<head>
+	<title>Google Maps test</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<style>
+      #map {
+        height: 650px;
+        width: 100%;
+       }
+    </style>
+</head>
+<body>
+<div ng-controller="mapsCtrl">
+	<nav class="navbar navbar-light bg-light">
+		<button class="btn btn-outline-danger" ng-click="gotoHome()">Exit game</button>
+	</nav>
+	<div id="game" class="m-3">
+		<h2>Singleplayer game</h2>
+		<div>
+			Logged in as: {{user}}<br>
+		</div>
+		<div ng-show="question">
+			<div>
+				<div id="scoreboard">
+					Score: {{ score }}
+				</div>
+
+				<div class="text-center border border-secondary rounded p-4 m-3">
+					<div ng-hide="hideQuestion">
+						<div>
+							<p class="lead">Question {{ count }}: {{ question.question }}</p>
+						</div>
+						<div>
+							<span ng-hide="hideGeocode">Selected city: {{foundCity}}</span>
+							<button class="btn btn-primary m-3" ng-click="givenAnswer()">Submit answer</button>
+						</div>
+					</div>
+
+					<div ng-hide="hideSavebutton">
+						{{ finishMessage }} <button class="btn btn-dark m-2" ng-click="saveScore()" ng-model="showFinalMessage">Finish quiz</button>
+					</div>
+					<div class="alert alert-success" role="alert" ng-show="showFinalMessage">
+						{{ highscoreMessage }}
+					</div>
+				</div>
+			</div>
+		</div>
+		<button class="btn btn-dark" ng-click="load()" ng-model="question" ng-hide="hideStartbutton">Start</button>
+		<div class="text-center" ng-show="showGame">
+			<div><span>Zoom in: </span></div>
+			<div class="btn-group" role="group" aria-label="Zoom Continents">
+				<button class="btn btn-info" ng-click="zoomWorld(47, 16)">World</button>
+				<button class="btn btn-info" ng-click="zoomContinent(47, -103)">North America</button>
+				<button class="btn btn-info" ng-click="zoomContinent(-21, -61)">South America</button>
+				<button class="btn btn-info" ng-click="zoomContinent(54, 18)">Europe</button>
+				<button class="btn btn-info" ng-click="zoomContinent(40, 87)">Asia</button>
+				<button class="btn btn-info" ng-click="zoomContinent(8, 20)">Africa</button>
+				<button class="btn btn-info" ng-click="zoomContinent(-30, 143)">Australia</button>
+				<button class="btn btn-info" ng-click="reloadMap()">Reload map</button>
+				<button class="btn btn-info" ng-click="resetMap()">Reset map</button>
+			</div>
+			<div id="map"></div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
